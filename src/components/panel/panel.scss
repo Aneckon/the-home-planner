@@ -8,6 +8,7 @@
 
   width: 350px;
   height: 600px;
+  overflow-y: auto;
 
   background: #1b1b1b;
   border-radius: 10px;
@@ -84,7 +85,7 @@
       flex-wrap: wrap;
     }
     &-item {
-      max-width: 150px;
+      max-width: 140px;
       width: 100%;
       min-height: 150px;
 

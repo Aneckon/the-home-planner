@@ -22,10 +22,30 @@ export const SplinePanel: FC<SplinePanelProps> = ({ dataRef }) => {
     const windowLoad = spline.findObjectByName('window');
     const doorLoad = spline.findObjectByName('door');
     const paintingLoad = spline.findObjectByName('painting');
+    const chairLoad = spline.findObjectByName('chair');
+    const pcLoad = spline.findObjectByName('pc');
 
     if (homeLoad !== undefined) {
-      setDataHide({ bedLoad, rugLoad, tableLoad, windowLoad, doorLoad, paintingLoad });
-      dataRef.current = { bedLoad, rugLoad, tableLoad, windowLoad, doorLoad, paintingLoad };
+      setDataHide({
+        bedLoad,
+        rugLoad,
+        tableLoad,
+        windowLoad,
+        doorLoad,
+        paintingLoad,
+        chairLoad,
+        pcLoad,
+      });
+      dataRef.current = {
+        bedLoad,
+        rugLoad,
+        tableLoad,
+        windowLoad,
+        doorLoad,
+        paintingLoad,
+        pcLoad,
+        chairLoad,
+      };
     }
   };
 
@@ -37,6 +57,8 @@ export const SplinePanel: FC<SplinePanelProps> = ({ dataRef }) => {
       dataRef.current.windowLoad.visible = false;
       dataRef.current.doorLoad.visible = false;
       dataRef.current.paintingLoad.visible = false;
+      dataRef.current.chairLoad.visible = false;
+      dataRef.current.pcLoad.visible = false;
     }
     if (dataName.includes('bed')) {
       dataRef.current.bedLoad.visible = true;
@@ -55,6 +77,12 @@ export const SplinePanel: FC<SplinePanelProps> = ({ dataRef }) => {
     }
     if (dataName.includes('painting')) {
       dataRef.current.paintingLoad.visible = true;
+    }
+    if (dataName.includes('chair')) {
+      dataRef.current.chairLoad.visible = true;
+    }
+    if (dataName.includes('pc')) {
+      dataRef.current.pcLoad.visible = true;
     }
   }, [dataHide, dataRef, dataName]);
 

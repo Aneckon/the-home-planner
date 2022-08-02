@@ -31,6 +31,14 @@ const panelImageMok = [
     id: 6,
     name: 'painting',
   },
+  {
+    id: 7,
+    name: 'chair',
+  },
+  {
+    id: 8,
+    name: 'pc',
+  },
 ];
 
 interface PanelProps {
