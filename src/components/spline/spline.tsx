@@ -14,13 +14,19 @@ export const SplinePanel: FC<SplinePanelProps> = ({ dataRef }) => {
   const dataName = useSelector((state: RootState) => state.dataNameReducer.dataNameList);
 
   const onLoad = (spline: { findObjectByName: (name: string) => void }) => {
+    const homeLoad = spline.findObjectByName('home');
+
     const bedLoad = spline.findObjectByName('bed');
     const rugLoad = spline.findObjectByName('rug');
     const tableLoad = spline.findObjectByName('table');
+    const windowLoad = spline.findObjectByName('window');
+    const doorLoad = spline.findObjectByName('door');
+    const paintingLoad = spline.findObjectByName('painting');
 
-    setDataHide({ bedLoad, rugLoad, tableLoad });
-
-    dataRef.current = { bedLoad, rugLoad, tableLoad };
+    if (homeLoad !== undefined) {
+      setDataHide({ bedLoad, rugLoad, tableLoad, windowLoad, doorLoad, paintingLoad });
+      dataRef.current = { bedLoad, rugLoad, tableLoad, windowLoad, doorLoad, paintingLoad };
+    }
   };
 
   useEffect(() => {
@@ -28,6 +34,9 @@ export const SplinePanel: FC<SplinePanelProps> = ({ dataRef }) => {
       dataRef.current.bedLoad.visible = false;
       dataRef.current.rugLoad.visible = false;
       dataRef.current.tableLoad.visible = false;
+      dataRef.current.windowLoad.visible = false;
+      dataRef.current.doorLoad.visible = false;
+      dataRef.current.paintingLoad.visible = false;
     }
     if (dataName.includes('bed')) {
       dataRef.current.bedLoad.visible = true;
@@ -37,6 +46,15 @@ export const SplinePanel: FC<SplinePanelProps> = ({ dataRef }) => {
     }
     if (dataName.includes('table')) {
       dataRef.current.tableLoad.visible = true;
+    }
+    if (dataName.includes('window')) {
+      dataRef.current.windowLoad.visible = true;
+    }
+    if (dataName.includes('door')) {
+      dataRef.current.doorLoad.visible = true;
+    }
+    if (dataName.includes('painting')) {
+      dataRef.current.paintingLoad.visible = true;
     }
   }, [dataHide, dataRef, dataName]);
 
