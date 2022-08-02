@@ -1,0 +1,35 @@
+.spline {
+  position: relative;
+
+  &__item {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+  }
+  &__btn {
+    display: none;
+  }
+  .a {
+    right: 0%;
+    top: 2%;
+    left: 0%;
+    margin: 0 auto;
+    z-index: 11;
+  }
+  .b {
+    right: 5%;
+    top: 2%;
+    left: 0%;
+    margin: 0 auto;
+    z-index: 11;
+  }
+  .active {
+    background: green;
+  }
+  .noactive {
+    background: red;
+  }
+}

@@ -1,0 +1,113 @@
+.panel {
+  display: none;
+  position: absolute;
+  right: -356px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+
+  width: 350px;
+  height: 600px;
+
+  background: #1b1b1b;
+  border-radius: 10px;
+
+  &__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #bd6600;
+
+    padding: 13px 20px;
+    border-radius: 10px 10px 0px 0px;
+
+    p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 24px;
+      text-transform: uppercase;
+
+      color: #ffffff;
+    }
+  }
+  &__body {
+    padding: 15px 20px;
+
+    &-search {
+      position: relative;
+      input {
+        width: 100%;
+        padding: 12px 35px 12px 15px;
+
+        background: transparent;
+        border: 1px solid #ffffff;
+        border-radius: 5px;
+
+        font-style: normal;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 15px;
+
+        color: #ffffff;
+        text-transform: uppercase;
+
+        &::placeholder {
+          font-style: normal;
+          font-weight: 400;
+          font-size: 10px;
+          line-height: 15px;
+
+          color: #ffffff;
+          text-transform: uppercase;
+        }
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        right: 15px;
+        top: 0;
+        bottom: 0;
+
+        margin: auto;
+        width: 15px;
+        height: 15px;
+
+        background: url('../../image/search.svg') no-repeat center;
+      }
+    }
+    &-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    &-item {
+      max-width: 150px;
+      width: 100%;
+      min-height: 150px;
+
+      cursor: pointer;
+      margin-top: 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid #ffffff;
+      border-radius: 5px;
+      color: #fff;
+
+      &__active{
+        border: 1px solid #BD6600;
+      }
+    }
+  }
+  &__remove{
+    cursor: pointer;
+  }
+}
+.open{
+  display: block;
+}
