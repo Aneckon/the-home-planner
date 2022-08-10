@@ -13,7 +13,7 @@ export const SplinePanel: FC<SplinePanelProps> = ({ dataRef }) => {
   const [dataHide, setDataHide] = useState<any>();
   const dataName = useSelector((state: RootState) => state.dataNameReducer.dataNameList);
 
-  const onLoad = (spline: { findObjectByName: (name: string) => void }) => {
+  const onLoad = (spline: { findObjectByName: (arg0: string) => any }) => {
     const homeLoad = spline.findObjectByName('home');
 
     const bedLoad = spline.findObjectByName('bed');
@@ -86,11 +86,23 @@ export const SplinePanel: FC<SplinePanelProps> = ({ dataRef }) => {
     }
   }, [dataHide, dataRef, dataName]);
 
+  const onMouseDown = (e: any) => {
+    console.log(e);
+
+    if (e.target.name === 'group') {
+      console.log('I have been clicked! group');
+    }
+    if (e.target.name === 'bed') {
+      console.log('I have been clicked! bed');
+    }
+  };
+
   return (
     <div className="spline">
       <Spline
+        onMouseDown={onMouseDown}
         onLoad={onLoad}
-        scene="https://prod.spline.design/wDOnG4ub6UUJ5cGk/scene.splinecode"
+        scene="https://prod.spline.design/eemBju5AbZCRFpu6/scene.splinecode"
       />
     </div>
   );

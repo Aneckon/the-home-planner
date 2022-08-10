@@ -38,14 +38,22 @@ const sideBarImageMok = [
   },
 ];
 
-export const SideBar= () => {
+export const SideBar = () => {
   const [openPanel, setOpenPanel] = useState<any>();
+
+  const handleOpenPanel = (name: string) => {
+    if (openPanel) {
+      setOpenPanel('');
+    } else {
+      setOpenPanel(name);
+    }
+  };
 
   return (
     <div className="sideBar">
       {sideBarImageMok.map((item) => (
         <div className="sideBar__item" key={item.id}>
-          <div className="sideBar__content" onClick={() => setOpenPanel(item.name)}>
+          <div className="sideBar__content" onClick={() => handleOpenPanel(item.name)}>
             <img src={item.image} alt="" />
             <div className="sideBar__content-dropright">
               <p>{item.name}</p>

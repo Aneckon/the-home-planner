@@ -6,7 +6,7 @@ import removeImage from '../../image/remove.svg';
 
 import './panel.scss';
 
-const panelImageMok = [
+const panelImageBox = [
   {
     id: 1,
     name: 'table',
@@ -67,18 +67,19 @@ export const Panel: FC<PanelProps> = ({ title, className, setOpenPanel }) => {
           <input type="text" placeholder="search" />
         </div>
         <div onClick={(e) => e.stopPropagation()} className="panel__body-content">
-          {panelImageMok.map((item) => (
-            <div
-              onClick={() => handleClick(item.name)}
-              key={item.id}
-              className={
-                clickBlock === item.name
-                  ? 'panel__body-item panel__body-item__active'
-                  : 'panel__body-item'
-              }>
-              {item.name}
-            </div>
-          ))}
+          {title === 'box' &&
+            panelImageBox.map((item) => (
+              <div
+                onClick={() => handleClick(item.name)}
+                key={item.id}
+                className={
+                  clickBlock === item.name
+                    ? 'panel__body-item panel__body-item__active'
+                    : 'panel__body-item'
+                }>
+                {item.name}
+              </div>
+            ))}
         </div>
       </div>
     </div>

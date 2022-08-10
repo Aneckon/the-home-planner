@@ -1,0 +1,57 @@
+.info {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+
+  cursor: pointer;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  background: #bd6600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0px 0px 10px #bd6600;
+
+  p {
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    border: 2px solid #bd6600;
+
+    animation: info 1.2s infinite;
+
+    box-shadow: 0px 0px 10px #bd6600;
+
+    z-index: -1;
+  }
+}
+
+@keyframes info {
+  0% {
+    width: 70px;
+    height: 70px;
+  }
+  50% {
+    width: 50px;
+    height: 50px;
+  }
+  100% {
+    width: 70px;
+    height: 70px;
+  }
+}

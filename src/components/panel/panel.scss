@@ -8,7 +8,6 @@
 
   width: 350px;
   height: 600px;
-  overflow-y: auto;
 
   background: #1b1b1b;
   border-radius: 10px;
@@ -34,7 +33,20 @@
     }
   }
   &__body {
-    padding: 15px 20px;
+    margin: 15px 0;
+    margin-right: 10px;
+    padding: 0px 15px 0px 20px;
+    overflow-y: auto;
+    height: 530px;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      margin-top: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #bd6600;
+      border-radius: 4px;
+    }
 
     &-search {
       position: relative;
@@ -100,15 +112,15 @@
       border-radius: 5px;
       color: #fff;
 
-      &__active{
-        border: 1px solid #BD6600;
+      &__active {
+        border: 1px solid #bd6600;
       }
     }
   }
-  &__remove{
+  &__remove {
     cursor: pointer;
   }
 }
-.open{
+.open {
   display: block;
 }

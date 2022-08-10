@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-import { Header, SideBar, SplinePanel } from './components';
+import { Header, Info, SideBar, SplinePanel } from './components';
 
 export const App = () => {
   const dataRef = useRef<any>();
@@ -8,8 +8,9 @@ export const App = () => {
   return (
     <div>
       <Header />
-      <SideBar/>
-      <SplinePanel dataRef={dataRef}/>
+      <SideBar />
+      <SplinePanel dataRef={dataRef} />
+      <Info />
     </div>
   );
 };
