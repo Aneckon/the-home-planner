@@ -11,6 +11,8 @@ interface SplinePanelProps {
 
 export const SplinePanel: FC<SplinePanelProps> = ({ dataRef }) => {
   const [dataHide, setDataHide] = useState<any>();
+  const [loading, setLoading] = useState(true);
+
   const dataName = useSelector((state: RootState) => state.dataNameReducer.dataNameList);
 
   const onLoad = (spline: { findObjectByName: (arg0: string) => any }) => {
@@ -26,16 +28,18 @@ export const SplinePanel: FC<SplinePanelProps> = ({ dataRef }) => {
     const pcLoad = spline.findObjectByName('pc');
 
     if (homeLoad !== undefined) {
-      setDataHide({
-        bedLoad,
-        rugLoad,
-        tableLoad,
-        windowLoad,
-        doorLoad,
-        paintingLoad,
-        chairLoad,
-        pcLoad,
-      });
+      setTimeout(() => {
+        setDataHide({
+          bedLoad,
+          rugLoad,
+          tableLoad,
+          windowLoad,
+          doorLoad,
+          paintingLoad,
+          chairLoad,
+          pcLoad,
+        });
+      }, 1);
       dataRef.current = {
         bedLoad,
         rugLoad,
@@ -51,6 +55,7 @@ export const SplinePanel: FC<SplinePanelProps> = ({ dataRef }) => {
 
   useEffect(() => {
     if (dataHide) {
+      setLoading(false);
       dataRef.current.bedLoad.visible = false;
       dataRef.current.rugLoad.visible = false;
       dataRef.current.tableLoad.visible = false;
@@ -87,18 +92,38 @@ export const SplinePanel: FC<SplinePanelProps> = ({ dataRef }) => {
   }, [dataHide, dataRef, dataName]);
 
   const onMouseDown = (e: any) => {
-    console.log(e);
-
     if (e.target.name === 'group') {
-      console.log('I have been clicked! group');
+      console.log('group');
     }
     if (e.target.name === 'bed') {
-      console.log('I have been clicked! bed');
+      console.log('bed');
+    }
+    if (e.target.name === 'rug') {
+      console.log('rug');
+    }
+    if (e.target.name === 'table') {
+      console.log('table');
+    }
+    if (e.target.name === 'window') {
+      console.log('window');
+    }
+    if (e.target.name === 'door') {
+      console.log('door');
+    }
+    if (e.target.name === 'painting') {
+      console.log('painting');
+    }
+    if (e.target.name === 'chair') {
+      console.log('chair');
+    }
+    if (e.target.name === 'pc') {
+      console.log('pc');
     }
   };
 
   return (
     <div className="spline">
+      {loading && <div className="loading">Loading...</div>}
       <Spline
         onMouseDown={onMouseDown}
         onLoad={onLoad}

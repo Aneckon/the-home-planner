@@ -49,6 +49,9 @@ interface PanelProps {
 
 export const Panel: FC<PanelProps> = ({ title, className, setOpenPanel }) => {
   const [clickBlock, setClickBlock] = useState<any>();
+
+  const [search, setSearch] = useState('');
+
   const dispatch = useDispatch();
 
   const handleClick = (name: string) => {
@@ -64,22 +67,32 @@ export const Panel: FC<PanelProps> = ({ title, className, setOpenPanel }) => {
       </div>
       <div className="panel__body">
         <div className="panel__body-search">
-          <input type="text" placeholder="search" />
+          <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            type="text"
+            placeholder="search"
+          />
         </div>
         <div onClick={(e) => e.stopPropagation()} className="panel__body-content">
           {title === 'box' &&
-            panelImageBox.map((item) => (
-              <div
-                onClick={() => handleClick(item.name)}
-                key={item.id}
-                className={
-                  clickBlock === item.name
-                    ? 'panel__body-item panel__body-item__active'
-                    : 'panel__body-item'
-                }>
-                {item.name}
-              </div>
-            ))}
+            panelImageBox
+              .filter((item) => {
+                const name = item.name.toLocaleLowerCase();
+                return name.includes(search.toLocaleLowerCase());
+              })
+              .map((item) => (
+                <div
+                  onClick={() => handleClick(item.name)}
+                  key={item.id}
+                  className={
+                    clickBlock === item.name
+                      ? 'panel__body-item panel__body-item__active'
+                      : 'panel__body-item'
+                  }>
+                  {item.name}
+                </div>
+              ))}
         </div>
       </div>
     </div>
